@@ -1,15 +1,13 @@
 import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
-// Your web app's Firebase configuration
+// Firebase configuration from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyA6_cS23BDwkjd2tyDfyf2MwR2dUrr5dD8",
-  authDomain: "ledger-6c645.firebaseapp.com",
-  projectId: "ledger-6c645",
-  storageBucket: "ledger-6c645.firebasestorage.app",
-  messagingSenderId: "446824073830",
-  appId: "1:446824073830:web:d57448109410d009a9bba7",
-  measurementId: "G-MP00NSV140"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 // Initialize Firebase - avoid duplicate initialization during HMR
