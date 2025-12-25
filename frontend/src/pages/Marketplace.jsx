@@ -152,10 +152,11 @@ export default function Marketplace() {
     <div className="space-y-8">
       {/* Header + Smart search */}
       <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <div className="absolute inset-0 pointer-events-none"></div>
         <div className="flex flex-col gap-3">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-1">Marketplace</h1>
-            <p className="text-lg text-gray-600">Discover talented peers and learn new skills</p>
+            <p className="text-lg text-gray-600 font-medium">Discover talented peers and learn new skills</p>
             {searchTerm && <p className="text-sm text-gray-500 mt-1">Showing results for “{searchTerm}”</p>}
           </div>
           <div className="flex flex-col md:flex-row gap-3">
@@ -166,7 +167,7 @@ export default function Marketplace() {
                 value={searchTerm}
                 onChange={() => {}}
                 placeholder="Ask in natural language, e.g., ‘Need help with Java lab’"
-                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
                 readOnly
               />
             </div>
@@ -174,7 +175,7 @@ export default function Marketplace() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm"
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition"
               >
                 <option value="rating">Highest Rated</option>
                 <option value="reviews">Most Reviews</option>
@@ -187,16 +188,16 @@ export default function Marketplace() {
 
       {/* Filters */}
       <div className="bg-white rounded-2xl border border-gray-200 p-4 shadow-sm flex flex-wrap gap-3 items-center">
-        <div className="flex items-center gap-2 text-gray-600 font-semibold"><Filter size={16} /> Filters</div>
+        <div className="flex items-center gap-2 text-gray-700 font-bold"><Filter size={16} /> Filters</div>
         <div className="flex gap-2 flex-wrap">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setFilterCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2.5 rounded-lg font-medium transition-all ${
                 filterCategory === category
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  ? 'bg-indigo-600 text-white shadow-md scale-105'
+                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200 hover:shadow-sm'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}

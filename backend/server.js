@@ -17,8 +17,8 @@ import walletRoutes from './routes/wallet.routes.js';
 import matchmakerRoutes from './routes/matchmaker.routes.js';
 import programRoutes from './routes/program.routes.js';
 
-// Load environment variables (redundant but safe after import side-effect)
-dotenv.config();
+// Load environment variables (force .env to override existing env)
+dotenv.config({ override: true });
 
 // Initialize Express app
 const app = express();
@@ -70,7 +70,7 @@ app.use(errorHandler);
 // Start server
 app.listen(PORT, () => {
   console.log(`\n🚀 Server running on port ${PORT}`);
-  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📊 Environment : ${process.env.NODE_ENV || 'development'}`);
   console.log(`🌐 CORS enabled for: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
   console.log(`\n✨ Skill-Share API is ready!\n`);
 });

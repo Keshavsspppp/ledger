@@ -81,14 +81,14 @@ export default function Dashboard() {
     <div className="space-y-8">
       {/* Header with Gradient */}
       <div className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
         <div className="relative flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-5xl font-bold text-white flex items-center gap-3 drop-shadow-lg">
               Welcome back, {currentUser?.displayName || currentUser?.email?.split('@')[0] || 'Learner'}! 
               <span className="text-5xl animate-wave inline-block">👋</span>
             </h1>
-            <p className="text-white/90 mt-2 text-lg">Here's what's happening with your learning journey today.</p>
+            <p className="text-white/90 mt-3 text-lg font-medium">Here's what's happening with your learning journey today.</p>
           </div>
           <Sparkles className="text-white/30" size={80} />
         </div>
@@ -97,10 +97,10 @@ export default function Dashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { label: 'Skills Learned', value: stats.skillsLearned, icon: Award, gradient: 'from-indigo-500 to-blue-500' },
-          { label: 'Hours Taught', value: stats.hoursTaught, icon: TrendingUp, gradient: 'from-purple-500 to-pink-500' },
-          { label: 'Active Sessions', value: stats.activeSessions, icon: Users, gradient: 'from-orange-500 to-red-500' },
-          { label: 'Total Hours', value: stats.totalHours, icon: Clock, gradient: 'from-green-500 to-emerald-500' }
+          { label: 'Skills Learned', value: stats.skillsLearned, icon: Award, gradient: 'from-blue-500 to-cyan-500', color: 'text-blue-600' },
+          { label: 'Hours Taught', value: stats.hoursTaught, icon: TrendingUp, gradient: 'from-purple-500 to-pink-500', color: 'text-purple-600' },
+          { label: 'Active Sessions', value: stats.activeSessions, icon: Users, gradient: 'from-orange-500 to-yellow-500', color: 'text-orange-600' },
+          { label: 'Total Hours', value: stats.totalHours, icon: Clock, gradient: 'from-green-500 to-emerald-500', color: 'text-green-600' }
         ].map((stat, index) => {
           const Icon = stat.icon
           return (
@@ -112,13 +112,13 @@ export default function Dashboard() {
               <div className="relative p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
-                    <Icon className="text-white" size={28} />
+                    <Icon className="text-white drop-shadow-lg" size={28} />
                   </div>
                   <ArrowUpRight className="text-gray-400 group-hover:text-green-500 transition" size={20} />
                 </div>
                 <p className="text-gray-600 text-sm font-medium mb-1">{stat.label}</p>
                 <div className="flex items-baseline gap-2">
-                  <p className="text-4xl font-bold text-gray-900">{stat.value}</p>
+                  <p className={`text-4xl font-bold ${stat.color}`}>{stat.value}</p>
                 </div>
               </div>
             </div>

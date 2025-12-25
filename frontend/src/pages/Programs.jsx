@@ -29,19 +29,22 @@ export default function Programs() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-1">My Programs</h1>
-          <p className="text-lg text-gray-600">See programs you organize or joined.</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">My Programs</h1>
+          <p className="text-lg text-gray-600 font-medium">Manage programs you organize or joined.</p>
         </div>
       </div>
 
       {error && (
-        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">{error}</div>
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">{error}</div>
       )}
 
       {loading ? (
-        <div className="text-gray-500">Loading programs...</div>
+        <div className="text-gray-500 py-10 text-center">Loading programs...</div>
       ) : programs.length === 0 ? (
-        <div className="text-gray-500">You have not joined any programs yet.</div>
+        <div className="text-gray-500 text-center py-10">
+          <p className="text-lg mb-2">📚 No programs yet</p>
+          <p className="text-sm">Join programs in the Marketplace to get started.</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {programs.map((p) => (

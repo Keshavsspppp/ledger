@@ -17,19 +17,19 @@ export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-r border-gray-700 shadow-2xl z-40">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-700 bg-gradient-to-r from-indigo-900/50 to-purple-900/50">
+      <div className="p-6 border-b border-gray-700 bg-gradient-to-r from-indigo-900/60 to-purple-900/60 backdrop-blur-sm">
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition"></div>
-            <div className="relative w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <div className="relative w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 cursor-pointer">
               <Sparkles className="text-white" size={24} />
             </div>
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white group-hover:text-indigo-300 transition">
+            <h1 className="text-xl font-bold text-white group-hover:text-indigo-300 transition">
               Skill-Share
             </h1>
-            <p className="text-xs text-gray-400">Open Ledger</p>
+            <p className="text-xs text-gray-400 font-medium">Community</p>
           </div>
         </Link>
       </div>
@@ -43,15 +43,15 @@ export default function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className="group relative block"
+              className="group relative block mx-2"
             >
               {active && (
                 <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl blur opacity-50`}></div>
               )}
               <div className={`relative flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-300 ${
                 active
-                  ? `bg-gradient-to-r ${item.gradient} text-white shadow-lg scale-105`
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                  ? `bg-gradient-to-r ${item.gradient} text-white shadow-lg scale-105 font-semibold`
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700/40'
               }`}>
                 <Icon size={20} className={active ? 'drop-shadow-lg' : 'group-hover:scale-110 transition-transform'} />
                 <span className="font-medium">{item.name}</span>

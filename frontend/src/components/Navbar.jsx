@@ -119,34 +119,34 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-64 right-0 h-16 bg-white border-b border-gray-200 z-30">
+    <nav className="fixed top-0 left-64 right-0 h-16 bg-white/80 backdrop-blur-xl border-b border-gray-100 z-30 shadow-sm">
       <div className="h-full px-8 flex items-center justify-between">
         {/* Search Bar */}
-        <div className="flex-1 max-w-2xl">
+        <div className="flex-1 max-w-2xl group">
           <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition" size={20} />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for skills, tutors, or sessions..."
-              className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:bg-white focus:border-indigo-500 transition-colors text-sm"
+              className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all text-sm"
             />
           </form>
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center gap-6 ml-8">
+        <div className="flex items-center gap-5 ml-8">
           {/* Time Wallet */}
           <button 
             onClick={handleTimeWallet}
-            className="flex items-center gap-2 px-4 py-2 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-br from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 rounded-xl transition-all shadow-sm hover:shadow-md cursor-pointer border border-indigo-100"
             title="View Ledger"
           >
             <Clock className="text-indigo-600" size={18} />
             <div className="text-right">
-              <p className="text-xs text-gray-600 leading-none">Balance</p>
-              <p className="text-sm font-bold text-indigo-600">{timeWallet.toFixed(1)} hrs</p>
+              <p className="text-xs text-gray-600 leading-none font-medium">Balance</p>
+              <p className="text-sm font-bold text-indigo-600">{timeWallet.toFixed(1)}h</p>
             </div>
           </button>
 
